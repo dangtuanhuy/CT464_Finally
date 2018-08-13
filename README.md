@@ -1,5 +1,5 @@
 # HP: CT464 - Tiểu Luận Tốt Nghiệp
-# Đề Tài : Phát triển ứng dụng web với Entity Framework và Windows Azure
+Đề Tài : Phát triển ứng dụng web với Entity Framework và Windows Azure
 # GVHD: Võ Huỳnh Trâm
    - Phát Triển Ứng Dụng Web Với ASP.NET MVC
    - Ứng dụng Makup Language & Json
