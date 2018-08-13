@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -176,9 +178,75 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\About.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Branch.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CT464.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CT464.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CT464.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CT464.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CT464.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Delivery.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImgProduct.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\News.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_Promotion.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promotion.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -845,6 +913,23 @@
     <Content Include="Content\Library\User\images\cart2.psd" />
     <Content Include="Content\Library\User\images\logo.psd" />
     <Content Include="Content\Library\User\images\Thumbs.db" />
+    <EntityDeploy Include="Models\CT464.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CT464.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CT464.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CT464.edmx</DependentUpon>
+      <LastGenOutput>CT464.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CT464.edmx.diagram">
+      <DependentUpon>CT464.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CT464.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CT464.edmx</DependentUpon>
+      <LastGenOutput>CT464.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -909,6 +994,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

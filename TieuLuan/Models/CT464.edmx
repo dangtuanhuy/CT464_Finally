@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CT464Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutUs" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutImg" Type="nvarchar" MaxLength="100" />
+          <Property Name="AboutDetails" Type="ntext" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchDetails" Type="ntext" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CategoryDetails" Type="nvarchar" MaxLength="550" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="60" />
+          <Property Name="Region" Type="nvarchar" MaxLength="15" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="24" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="4" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerPass" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerFullName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="ContactCompany" Type="nvarchar" MaxLength="30" />
+          <Property Name="CustomerAddress" Type="nvarchar" MaxLength="60" />
+          <Property Name="CustomerRegion" Type="nvarchar" MaxLength="15" />
+          <Property Name="CustomerPostalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CustomerPhone" Type="nvarchar" MaxLength="24" />
+          <Property Name="CustomerFax" Type="nvarchar" MaxLength="24" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryDetails" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryQuestion" Type="ntext" />
+          <Property Name="DeliveryImg" Type="nvarchar(max)" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeCode" />
+          </Key>
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeePass" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" />
+          <Property Name="TitleOfCourtesy" Type="nvarchar" MaxLength="25" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="HireDate" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="60" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="24" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="4" />
+          <Property Name="EmployeeImg" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="ReportsTo" Type="int" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="ImgProducts">
+          <Key>
+            <PropertyRef Name="ImgId" />
+          </Key>
+          <Property Name="ImgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImgProducts" Type="nvarchar(max)" />
+          <Property Name="SortImg" Type="tinyint" Nullable="false" />
+          <Property Name="ProductsId" Type="int" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewTitles" Type="nvarchar" MaxLength="50" />
+          <Property Name="NewsDetails" Type="nvarchar(max)" />
+          <Property Name="NewsBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="NewsImgs" Type="nvarchar(max)" />
+          <Property Name="NewsDate" Type="date" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="40" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="RequiredDate" Type="datetime" />
+          <Property Name="ShippedDate" Type="datetime" />
+          <Property Name="Freight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OrderAddress" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SoldPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="smallint" />
+          <Property Name="Payment" Type="bit" />
+          <Property Name="PaymentOnline" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product_Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="PromotionId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Gift" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProductDetails" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductStatus" Type="bit" />
+          <Property Name="ProductImg" Type="nvarchar(max)" />
+          <Property Name="ProductUpdate" Type="date" />
+          <Property Name="ProductQty" Type="int" />
+          <Property Name="ProductSold" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductsOldPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromotionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PromotionDetails" Type="ntext" />
+          <Property Name="PromotionDiscount" Type="int" />
+          <Property Name="PromotionStatus" Type="bit" />
+          <Property Name="PromotionOpen" Type="date" />
+          <Property Name="PromotionClose" Type="date" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleDescription" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomePage" Type="ntext" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_About_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="About" Type="Self.About" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="About">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgProducts_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ImgProducts" Type="Self.ImgProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProducts">
+              <PropertyRef Name="ProductsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="PromotionId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CT464ModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImgProducts" EntityType="Self.ImgProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Promotion" EntityType="Self.Product_Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="About" EntitySet="About" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Branch" EntitySet="Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Role" Association="Self.FK_Customer_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Employee" Association="Self.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgProducts_Products" Association="Self.FK_ImgProducts_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ImgProducts" EntitySet="ImgProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Employee" Association="Self.FK_News_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Products" Association="Self.FK_Product_Promotion_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Promotion" Association="Self.FK_Product_Promotion_Promotion">
+            <End Role="Promotion" EntitySet="Promotion" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Supplier" Association="Self.FK_Products_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CT464Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutUs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AboutDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_About_Employee" FromRole="About" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Branch_Employee" FromRole="Branch" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryDetails" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CustomerCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerPass" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerRegion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerFax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeCode" />
+          </Key>
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeePass" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="HireDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportsTo" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Abouts" Relationship="Self.FK_About_Employee" FromRole="Employee" ToRole="About" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
+          <NavigationProperty Name="Deliveries" Relationship="Self.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Employee" FromRole="Employee" ToRole="News" />
+        </EntityType>
+        <EntityType Name="ImgProduct">
+          <Key>
+            <PropertyRef Name="ImgId" />
+          </Key>
+          <Property Name="ImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortImg" Type="Byte" Nullable="false" />
+          <Property Name="ProductsId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ImgProducts_Products" FromRole="ImgProducts" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewTitles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewsImgs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDate" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_News_Employee" FromRole="News" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="RequiredDate" Type="DateTime" Precision="3" />
+          <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+          <Property Name="Freight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SoldPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="Int16" />
+          <Property Name="Payment" Type="Boolean" />
+          <Property Name="PaymentOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Product_Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="PromotionId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Gift" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Promotion_Products" FromRole="Product_Promotion" ToRole="Products" />
+          <NavigationProperty Name="Promotion" Relationship="Self.FK_Product_Promotion_Promotion" FromRole="Product_Promotion" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductStatus" Type="Boolean" />
+          <Property Name="ProductImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductUpdate" Type="DateTime" Precision="0" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="ProductSold" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductsOldPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
+          <NavigationProperty Name="ImgProducts" Relationship="Self.FK_ImgProducts_Products" FromRole="Products" ToRole="ImgProducts" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
+          <NavigationProperty Name="Product_Promotion" Relationship="Self.FK_Product_Promotion_Products" FromRole="Products" ToRole="Product_Promotion" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Supplier" FromRole="Products" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromotionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionDiscount" Type="Int32" />
+          <Property Name="PromotionStatus" Type="Boolean" />
+          <Property Name="PromotionOpen" Type="DateTime" Precision="0" />
+          <Property Name="PromotionClose" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Product_Promotion" Relationship="Self.FK_Product_Promotion_Promotion" FromRole="Promotion" ToRole="Product_Promotion" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Supplier" FromRole="Supplier" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_About_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="About" Type="Self.About" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="About">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgProducts_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ImgProducts" Type="Self.ImgProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProducts">
+              <PropertyRef Name="ProductsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="PromotionId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CT464Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abouts" EntityType="Self.About" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="ImgProducts" EntityType="Self.ImgProduct" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Product_Promotion" EntityType="Self.Product_Promotion" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="About" EntitySet="Abouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Role" Association="Self.FK_Customer_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Employee" Association="Self.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Employee" Association="Self.FK_News_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgProducts_Products" Association="Self.FK_ImgProducts_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ImgProducts" EntitySet="ImgProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Products" Association="Self.FK_Product_Promotion_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Promotion" Association="Self.FK_Product_Promotion_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Supplier" Association="Self.FK_Products_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CT464ModelStoreContainer" CdmEntityContainer="CT464Entities">
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="CT464Model.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
+                <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
+                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="CT464Model.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchDetails" ColumnName="BranchDetails" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CT464Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDetails" ColumnName="CategoryDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="CT464Model.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CT464Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerPass" ColumnName="CustomerPass" />
+                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+                <ScalarProperty Name="ContactCompany" ColumnName="ContactCompany" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
+                <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="CT464Model.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
+                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
+                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
+                <ScalarProperty Name="DeliveryImg" ColumnName="DeliveryImg" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CT464Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TitleOfCourtesy" ColumnName="TitleOfCourtesy" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="EmployeeImg" ColumnName="EmployeeImg" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgProducts">
+            <EntityTypeMapping TypeName="CT464Model.ImgProduct">
+              <MappingFragment StoreEntitySet="ImgProducts">
+                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+                <ScalarProperty Name="ImgProducts" ColumnName="ImgProducts" />
+                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
+                <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="CT464Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="NewTitles" ColumnName="NewTitles" />
+                <ScalarProperty Name="NewsDetails" ColumnName="NewsDetails" />
+                <ScalarProperty Name="NewsBy" ColumnName="NewsBy" />
+                <ScalarProperty Name="NewsImgs" ColumnName="NewsImgs" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="CT464Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="CT464Model.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="PaymentOnline" ColumnName="PaymentOnline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Promotion">
+            <EntityTypeMapping TypeName="CT464Model.Product_Promotion">
+              <MappingFragment StoreEntitySet="Product_Promotion">
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Gift" ColumnName="Gift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CT464Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
+                <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
+                <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
+                <ScalarProperty Name="ProductsOldPrice" ColumnName="ProductsOldPrice" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="CT464Model.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="PromotionName" ColumnName="PromotionName" />
+                <ScalarProperty Name="PromotionDetails" ColumnName="PromotionDetails" />
+                <ScalarProperty Name="PromotionDiscount" ColumnName="PromotionDiscount" />
+                <ScalarProperty Name="PromotionStatus" ColumnName="PromotionStatus" />
+                <ScalarProperty Name="PromotionOpen" ColumnName="PromotionOpen" />
+                <ScalarProperty Name="PromotionClose" ColumnName="PromotionClose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CT464Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="CT464Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CT464Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
