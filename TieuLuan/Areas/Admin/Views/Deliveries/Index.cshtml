@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TieuLuan.Models.Delivery>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryQuestion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DeliveryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DeliveryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DeliveryId })
+        </td>
+    </tr>
+}
+
+</table>

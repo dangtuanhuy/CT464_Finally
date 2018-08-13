@@ -1,0 +1,67 @@
+﻿@model TieuLuan.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewTitles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewTitles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsImgs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsImgs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmployeePass)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NewsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

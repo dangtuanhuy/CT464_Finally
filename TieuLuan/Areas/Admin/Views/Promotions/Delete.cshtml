@@ -1,0 +1,73 @@
+﻿@model TieuLuan.Models.Promotion
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionDiscount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionOpen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionOpen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionClose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionClose)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

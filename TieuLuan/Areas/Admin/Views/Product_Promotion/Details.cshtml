@@ -1,0 +1,43 @@
+﻿@model TieuLuan.Models.Product_Promotion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product_Promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Promotion.PromotionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promotion.PromotionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

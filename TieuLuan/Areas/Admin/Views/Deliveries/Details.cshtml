@@ -1,0 +1,59 @@
+﻿@model TieuLuan.Models.Delivery
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Delivery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmployeePass)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DeliveryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

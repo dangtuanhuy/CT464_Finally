@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TieuLuan.Models.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NewTitles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsImgs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewTitles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsImgs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NewsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NewsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NewsId })
+        </td>
+    </tr>
+}
+
+</table>

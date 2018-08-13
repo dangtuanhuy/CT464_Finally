@@ -1,0 +1,51 @@
+﻿@model TieuLuan.Models.About
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>About</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmployeePass)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AboutId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
