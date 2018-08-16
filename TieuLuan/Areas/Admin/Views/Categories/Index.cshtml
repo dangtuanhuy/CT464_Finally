@@ -5,36 +5,59 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">DANH MỤC SẢN PHẨM</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Categories")" class="btn btn-info">
+       Tạo Mới
+    </a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryDetails)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDetails)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDetails)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-success">
+                        <i class="fa fa-flash"></i>
+                        <span>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryDetails)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
-        </td>
-    </tr>
-}
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Categories", new { id = item.CategoryId })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
 
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryId })" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i>
+                        <span>
+
+                        </span>
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

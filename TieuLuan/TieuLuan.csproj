@@ -196,16 +196,20 @@
     <Compile Include="Models\About.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AboutMetaData.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Branch.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchMetaData.cs" />
+    <Compile Include="Models\CategoryMetaData.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactMetaData.cs" />
     <Compile Include="Models\CT464.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,9 +228,11 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerMataData.cs" />
     <Compile Include="Models\Delivery.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliveryMetaData.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
@@ -238,6 +244,7 @@
     <Compile Include="Models\News.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewsMetaData.cs" />
     <Compile Include="Models\Order.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
@@ -247,18 +254,22 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductMetaData.cs" />
     <Compile Include="Models\Product_Promotion.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Promotion.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PromotionMataData.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoleMetaData.cs" />
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SupplierMataData.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
@@ -1285,6 +1296,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Contacts\" />
     <Folder Include="Content\Library\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Data Seed\" />
     <Folder Include="ImgUI\About\" />
     <Folder Include="ImgUI\Emp\" />
     <Folder Include="ImgUI\News\" />
