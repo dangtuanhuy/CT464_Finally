@@ -269,7 +269,7 @@
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SupplierMataData.cs" />
+    <Compile Include="Models\SupplierMetaData.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
@@ -1072,6 +1072,7 @@
     <Content Include="Content\Library\User\js\megamenu.js" />
     <Content Include="Content\Library\User\js\slides.min.jquery.js" />
     <Content Include="Content\Library\User\js\zoome-e.js" />
+    <Content Include="Data Seed\WA.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1296,7 +1297,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Contacts\" />
     <Folder Include="Content\Library\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="Data Seed\" />
     <Folder Include="ImgUI\About\" />
     <Folder Include="ImgUI\Emp\" />
     <Folder Include="ImgUI\News\" />

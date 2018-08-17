@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="CT464Model.About" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Branch" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Category" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT464Model.Contact" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Customer" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Delivery" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Employee" Width="1.5" PointX="3.75" PointY="17.625" IsExpanded="true" />
@@ -36,6 +35,7 @@
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Products" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Promotion" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_Products_Supplier" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CT464Model.Contact" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

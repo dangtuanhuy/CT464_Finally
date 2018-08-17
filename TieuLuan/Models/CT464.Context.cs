@@ -28,7 +28,6 @@ namespace TieuLuan.Models
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Delivery> Deliveries { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
@@ -42,5 +41,6 @@ namespace TieuLuan.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     }
 }

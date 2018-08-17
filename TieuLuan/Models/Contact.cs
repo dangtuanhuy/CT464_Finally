@@ -21,7 +21,7 @@ namespace TieuLuan.Models
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public string Phone { get; set; }
-        public string Extension { get; set; }
+        public string ContactsTitle { get; set; }
         public string Fax { get; set; }
         public Nullable<bool> Status { get; set; }
     }
