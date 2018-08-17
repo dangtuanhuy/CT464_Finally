@@ -46,7 +46,7 @@
             </div>
 
             <!--logo start-->
-            <a href="#" class="logo">CT464<span class="lite">Admin</span></a>
+            <a href="#" class="logo">CT464<span class="lite">Quản Trị</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -266,9 +266,9 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="~/Content/Library/Admin/img/avatar1_small.jpg">
+                                <img alt="" src="~/Content/Library/Admin/img/avatar-mini4.jpg">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">Tuấn Huy</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -310,39 +310,39 @@
                     <li class="active">
                         <a class="" href="#">
                             <i class="icon_house_alt"></i>
-                            <span>Dashboard</span>
+                            <span>Quản Lý</span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="fa fa-user"></i>
-                            <span>Employee</span>
+                            <span>QL Chung</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="#">About</a></li>
-                            <li><a class="" href="#">Branch</a></li>
-                            <li><a class="" href="#">Delivery</a></li>
-                            <li><a class="" href="#">News</a></li>
-                            <li><a class="" href="#">Employees</a></li>
+                            <li><a class="" href="@Url.Action("Index","Abouts")">Về Công Ty</a></li>
+                            <li><a class="" href="@Url.Action("Index","Branches")">Chi Nhánh</a></li>
+                            <li><a class="" href="@Url.Action("Index","Deliveries")">Vận Chuyển</a></li>
+                            <li><a class="" href="@Url.Action("Index","News")">Tin Tức</a></li>
+                            <li><a class="" href="@Url.Action("Index","Employees")">Nhân Viên</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="fa fa-shopping-cart"></i>
-                            <span>Order</span>
+                            <span>Đơn Hàng</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="#">Order</a></li>
-                            <li><a class="" href="#">OrderDetails</a></li>
-                            <li><a class="" href="#">Promotion</a></li>
+                            <li><a class="" href="#">Đơn Hàng</a></li>
+                            <li><a class="" href="#">Chi Tiết Đơn Hàng</a></li>
+                            <li><a class="" href="#">Khuyến Mãi</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="" href="#">
                             <i class="icon_piechart"></i>
-                            <span>Charts</span>
+                            <span>Thống Kê</span>
 
                         </a>
 
@@ -351,25 +351,25 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_cart_alt"></i>
-                            <span>Products</span>
+                            <span>QL Sản Phẩm</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="@Url.Action("Index", "Categories")">Category</a></li>
-                            <li><a class="" href="@Url.Action("Index", "Suppliers")">Suppliers</a></li>
-                            <li><a class="" href="#">Products</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Categories")">Danh Mục Sản Phẩm</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Suppliers")">Nhà Cung Cấp</a></li>
+                            <li><a class="" href="#">Sản Phẩm</a></li>
                         </ul>
                     </li>
 
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="fa fa-users"></i>
-                            <span>Members</span>
+                            <span>QL Khách Hàng</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="#">Customers</a></li>
-                            <li><a class="" href="#"><span>Contacts</span></a></li>
+                            <li><a class="" href="#">Khách Hàng</a></li>
+                            <li><a class="" href="#"><span>Liên Hệ</span></a></li>
                         </ul>
                     </li>
 
@@ -384,10 +384,10 @@
                 <!--overview start-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+                        <h3 class="page-header"><i class="fa fa-laptop"></i> Quản lý</h3>
                         <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="#">Home</a></li>
-                            <li><i class="fa fa-laptop"></i>Dashboard</li>
+                            <li><i class="fa fa-home"></i><a href="@Url.Action("Index","Page")">Trang Chủ</a></li>
+                            <li><i class="fa fa-laptop"></i>Quản Lý</li>
                         </ol>
                     </div>
                 </div>

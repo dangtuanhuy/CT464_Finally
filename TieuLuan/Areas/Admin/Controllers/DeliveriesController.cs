@@ -39,7 +39,7 @@ namespace TieuLuan.Areas.Admin.Controllers
         // GET: Admin/Deliveries/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass");
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", delivery.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", delivery.EmployeeCode);
             return View(delivery);
         }
 
@@ -73,7 +73,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", delivery.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", delivery.EmployeeCode);
             return View(delivery);
         }
 
@@ -90,7 +90,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "EmployeePass", delivery.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", delivery.EmployeeCode);
             return View(delivery);
         }
 

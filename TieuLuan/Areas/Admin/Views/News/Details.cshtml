@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2>Details</h2>
-
+<h2 class="text-center">Thông Tin Tin Tức</h2>
+<div><a href="@Url.Action("Index", "News")" class="btn btn-info">Quản lý</a></div>
 <div>
-    <h4>News</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -62,6 +62,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NewsId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "News", new { id = Model.NewsId })" class="btn btn-success">Chỉnh Sửa</a>
 </p>
