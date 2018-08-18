@@ -124,6 +124,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult UploadProducts(int? id)
         {
             if (id == null)
@@ -182,6 +183,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                     }
 
                     db.SaveChanges();
+                    return RedirectToAction("UploadProducts");
                 }
 
                 catch (Exception ex)
