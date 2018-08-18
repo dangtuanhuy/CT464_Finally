@@ -236,6 +236,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImgProduct.cs">
       <DependentUpon>CT464.tt</DependentUpon>
@@ -1241,6 +1242,7 @@
     <Content Include="Areas\Admin\Views\Deliveries\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\UploadProducts.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

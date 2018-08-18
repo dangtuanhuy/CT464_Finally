@@ -78,6 +78,13 @@
             @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
         </td>
         <td>
+            <a href="@Url.Action("UploadProducts", "Products", new { id = item.ProductId })" class="btn btn-info">
+                <i class="fa fa-image"></i>
+                <span>
+
+                </span>
+            </a>
+            |
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })

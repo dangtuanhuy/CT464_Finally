@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -122,6 +123,76 @@ namespace TieuLuan.Areas.Admin.Controllers
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult UploadProducts(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var products = db.Products.Include(s => s.ImgProducts).SingleOrDefault(p => p.ProductId == id);
+            if (products == null)
+            {
+                object Err = "Information not find";
+                return View("Error", Err);
+            }
+            return View(products);
+        }
+        [HttpPost]
+        public ActionResult UploadProducts(int id, HttpPostedFileBase[] files)
+        {
+            byte max = 0;
+            var listImg = db.ImgProducts.Where(p => p.ProductsId == id).ToList();
+            if (listImg.Count > 0)
+                max = listImg.Max(p => p.SortImg);
+            var listFile = files.Where(p => p != null);
+            foreach (var f in listFile)
+            {
+                //Tạo một đối tượ
+                var img = new ImgProduct();
+                img.ProductsId = id;
+                img.ImgProducts = f.FileName;
+                img.SortImg = ++max;
+                db.ImgProducts.Add(img);
+                var path = Server.MapPath("~/ImgUI/Product/" + f.FileName);
+                f.SaveAs(path);
+            }
+            if (listFile.Any())
+                db.SaveChanges();
+            return RedirectToAction("UploadProducts");
+        }
+       
+        public ActionResult DeleteImg(int id, int? ProductsID)
+        {
+            if (ProductsID.HasValue)
+            {
+                try
+                {
+                    var img = db.ImgProducts.Find(id);
+                    if (img == null)
+                        return RedirectToAction("Index");
+                    db.ImgProducts.Remove(img);
+                    var fileName = img.ImgProducts;
+                    var path = Server.MapPath("~/ImgUI/Product/" + fileName);
+                    var file = new FileInfo(path);
+
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
+
+                    db.SaveChanges();
+                }
+
+                catch (Exception ex)
+                {
+                    object mess = "Can not Delete IMG " + ex.Message;
+                    return View("Error", mess);
+                }
+            }
+
+            TempData["Success_Mess"] = "<script>alert('Delete Success')</script>";
+            return Redirect("~/Products/UploadProducts/" + ProductsID);
         }
 
         protected override void Dispose(bool disposing)
