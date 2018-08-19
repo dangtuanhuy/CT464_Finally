@@ -1240,9 +1240,9 @@
     <Content Include="Areas\Admin\Views\Deliveries\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\UploadProducts.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
