@@ -4,11 +4,10 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
-
-<h2>Details</h2>
+<h2 class="text-center">Chi Tiết Sản Phẩm</h2>
+<a href="@Url.Action("Index", "Products")" class="btn btn-info">Quản Lý</a>
 
 <div>
-    <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -34,15 +33,6 @@
         <dd>
             @Html.DisplayFor(model => model.ProductStatus)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductImg)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ProductUpdate)
         </dt>
@@ -94,6 +84,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Products", new { id = Model.ProductId })" class="btn btn-success">Chỉnh Sửa</a>
 </p>

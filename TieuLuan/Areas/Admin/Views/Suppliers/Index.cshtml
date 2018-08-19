@@ -31,9 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Fax)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomePage)
-            </th>
+
             <th></th>
         </tr>
         </thead>
@@ -59,9 +57,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Fax)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomePage)
-                </td>
+
                 <td>
                     <a href="@Url.Action("Edit", "Suppliers", new { id = item.SupplierId })" class="btn btn-success">
                         <i class="fa fa-flash"></i>

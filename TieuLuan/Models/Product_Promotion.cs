@@ -18,7 +18,7 @@ namespace TieuLuan.Models
         public int ProductId { get; set; }
         public string Gift { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Promotion Promotion { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

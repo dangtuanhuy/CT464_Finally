@@ -4,21 +4,20 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2 class=" text-center">Upload Products</h2>
+<h2 class=" text-center">Upload Hình Sản Phẩm</h2>
 @using (Html.BeginForm("UploadProducts", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <article class="panel panel-info">
         @Html.HiddenFor(model => model.ProductId)
         <div class="panel-heading icon">
-            <i class="glyphicon glyphicon-asterisk"></i>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Sort</th>
-                        <th>Picture</th>
-                        <th>Remove</th>
+                        <th>Mã</th>
+                        <th>Tên Hình</th>
+                        <th>Thứ Tự</th>
+                        <th>Hình</th>
+                        <th>Xóa</th>
                     </tr>
                 </thead>
                 @foreach (var item in @Model.ImgProducts)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -48,14 +49,29 @@ namespace TieuLuan.Areas.Admin.Controllers
         // POST: Admin/Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductImg,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
         {
+
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
+                try
+                {
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                }
+                catch(DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -84,14 +100,28 @@ namespace TieuLuan.Areas.Admin.Controllers
         // POST: Admin/Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductImg,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(product).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
@@ -149,7 +179,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             var listFile = files.Where(p => p != null);
             foreach (var f in listFile)
             {
-                //Tạo một đối tượ
+                //Tạo một đối tượng
                 var img = new ImgProduct();
                 img.ProductsId = id;
                 img.ImgProducts = f.FileName;
@@ -162,7 +192,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 db.SaveChanges();
             return RedirectToAction("UploadProducts");
         }
-       
+
         public ActionResult DeleteImg(int id, int? ProductsID)
         {
             if (ProductsID.HasValue)

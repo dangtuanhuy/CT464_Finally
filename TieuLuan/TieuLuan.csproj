@@ -47,6 +47,14 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -125,12 +133,6 @@
     </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
@@ -732,6 +734,59 @@
     <Content Include="Content\Library\Admin\assets\dataTables\datatables.js" />
     <Content Include="Content\Library\Admin\assets\dataTables\datatables.min.css" />
     <Content Include="Content\Library\Admin\assets\dataTables\datatables.min.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\bootstrap-datepicker.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\datepicker3.css" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.ua.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Content\Library\Admin\assets\datepicker\locales\bootstrap-datepicker.zh-TW.js" />
     <Content Include="Content\Library\Admin\assets\fullcalendar\changelog.txt" />
     <Content Include="Content\Library\Admin\assets\fullcalendar\demos\agenda-views.html" />
     <Content Include="Content\Library\Admin\assets\fullcalendar\demos\basic-views.html" />
@@ -1314,6 +1369,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

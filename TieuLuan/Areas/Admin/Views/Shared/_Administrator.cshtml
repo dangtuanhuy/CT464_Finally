@@ -46,7 +46,7 @@
             </div>
 
             <!--logo start-->
-            <a href="#" class="logo">CT464<span class="lite">Quản Trị</span></a>
+            <a href="@Url.Action("Index","Page")" class="logo">CT464<span class="lite">Quản Trị</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -308,7 +308,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="#">
+                        <a class="" href="@Url.Action("Index","Page")">
                             <i class="icon_house_alt"></i>
                             <span>Quản Lý</span>
                         </a>
@@ -357,7 +357,7 @@
                         <ul class="sub">
                             <li><a class="" href="@Url.Action("Index", "Categories")">Danh Mục Sản Phẩm</a></li>
                             <li><a class="" href="@Url.Action("Index", "Suppliers")">Nhà Cung Cấp</a></li>
-                            <li><a class="" href="#">Sản Phẩm</a></li>
+                            <li><a class="" href="@Url.Action("Index","Products")">Sản Phẩm</a></li>
                         </ul>
                     </li>
 
@@ -451,13 +451,24 @@
     <!-- container section start -->
     <!-- javascripts -->
     <script src="~/Content/Library/Admin/js/jquery.js"></script>
-
+    <script src="~/Content/Library/Admin/assets/ckeditor/ckeditor.js"></script>
+    <link href="~/Content/Library/Admin/assets/ckeditor/skins/moono-lisa/editor.css" rel="stylesheet" />
+    <script>
+    CKEDITOR.replace('editor1'
+        );
+    </script>
     <script src="~/Content/Library/Admin/js/jquery-ui-1.10.4.min.js"></script>
     <script src="~/Content/Library/Admin/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="~/Content/Library/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- bootstrap -->
 
     <script src="~/Content/Library/Admin/js/bootstrap.min.js"></script>
+    <script src="~/Content/Library/Admin/assets/datepicker/bootstrap-datepicker.js"></script>
+    <script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+    </script>
     @*Datatable bootraps*@
 
     <link href="~/Content/Library/Admin/assets/dataTables/datatables.min.css" rel="stylesheet" />

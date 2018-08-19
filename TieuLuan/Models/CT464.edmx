@@ -506,7 +506,7 @@
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CategoryDetails" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="CT464Model.FK_Products_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -571,7 +571,7 @@
           <Property Name="ImgProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SortImg" Type="Byte" Nullable="false" />
           <Property Name="ProductsId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ImgProducts_Products" FromRole="ImgProducts" ToRole="Products" />
+          <NavigationProperty Name="Product" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -612,7 +612,7 @@
           <Property Name="Payment" Type="Boolean" />
           <Property Name="PaymentOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
+          <NavigationProperty Name="Product" Relationship="CT464Model.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product_Promotion">
           <Key>
@@ -622,29 +622,8 @@
           <Property Name="PromotionId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Gift" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Promotion_Products" FromRole="Product_Promotion" ToRole="Products" />
           <NavigationProperty Name="Promotion" Relationship="Self.FK_Product_Promotion_Promotion" FromRole="Product_Promotion" ToRole="Promotion" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ProductDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductStatus" Type="Boolean" />
-          <Property Name="ProductImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ProductUpdate" Type="DateTime" Precision="0" />
-          <Property Name="ProductQty" Type="Int32" />
-          <Property Name="ProductSold" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ProductsOldPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SupplierId" Type="Int32" />
-          <Property Name="CategoryId" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
-          <NavigationProperty Name="ImgProducts" Relationship="Self.FK_ImgProducts_Products" FromRole="Products" ToRole="ImgProducts" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
-          <NavigationProperty Name="Product_Promotion" Relationship="Self.FK_Product_Promotion_Products" FromRole="Products" ToRole="Product_Promotion" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Supplier" FromRole="Products" ToRole="Supplier" />
+          <NavigationProperty Name="Product" Relationship="CT464Model.FK_Product_Promotion_Products" FromRole="Product_Promotion" ToRole="Product" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -681,7 +660,7 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Supplier" FromRole="Supplier" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="CT464Model.FK_Products_Supplier" FromRole="Supplier" ToRole="Product" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -718,20 +697,6 @@
             </Principal>
             <Dependent Role="Branch">
               <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -805,20 +770,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ImgProducts_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ImgProducts" Type="Self.ImgProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ImgProducts">
-              <PropertyRef Name="ProductsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OrderDetails_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
@@ -828,34 +779,6 @@
             </Principal>
             <Dependent Role="OrderDetails">
               <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderDetails_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="OrderDetails">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Promotion_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Product_Promotion">
-              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -871,20 +794,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Products_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="SupplierId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="SupplierId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CT464Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Abouts" EntityType="Self.About" />
           <EntitySet Name="Branches" EntityType="Self.Branch" />
@@ -897,7 +806,6 @@
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="Product_Promotion" EntityType="Self.Product_Promotion" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Promotions" EntityType="Self.Promotion" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
@@ -909,10 +817,6 @@
           <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Branch" EntitySet="Branches" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Role" Association="Self.FK_Customer_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -934,31 +838,36 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
-          <AssociationSet Name="FK_ImgProducts_Products" Association="Self.FK_ImgProducts_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ImgProducts" EntitySet="ImgProducts" />
-          </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Promotion_Products" Association="Self.FK_Product_Promotion_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Promotion_Promotion" Association="Self.FK_Product_Promotion_Promotion">
             <End Role="Promotion" EntitySet="Promotions" />
             <End Role="Product_Promotion" EntitySet="Product_Promotion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Products_Supplier" Association="Self.FK_Products_Supplier">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
           <EntitySet Name="Contacts" EntityType="CT464Model.Contact" />
+          <EntitySet Name="Products" EntityType="CT464Model.Product" />
+          <AssociationSet Name="FK_Products_Category" Association="CT464Model.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgProducts_Products" Association="CT464Model.FK_ImgProducts_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ImgProduct" EntitySet="ImgProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Products" Association="CT464Model.FK_OrderDetails_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Products" Association="CT464Model.FK_Product_Promotion_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Supplier" Association="CT464Model.FK_Products_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
           <Key>
@@ -975,6 +884,97 @@
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductStatus" Type="Boolean" />
+          <Property Name="ProductImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductUpdate" Type="DateTime" Precision="0" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="ProductSold" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductsOldPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="CT464Model.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ImgProducts" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
+          <NavigationProperty Name="OrderDetails" Relationship="CT464Model.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="Product_Promotion" Relationship="CT464Model.FK_Product_Promotion_Products" FromRole="Product" ToRole="Product_Promotion" />
+          <NavigationProperty Name="Supplier" Relationship="CT464Model.FK_Products_Supplier" FromRole="Product" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_Products_Category">
+          <End Type="CT464Model.Category" Role="Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgProducts_Products">
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.ImgProduct" Role="ImgProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProduct">
+              <PropertyRef Name="ProductsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Products">
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Products">
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Product_Promotion" Role="Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Supplier">
+          <End Type="CT464Model.Supplier" Role="Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1118,23 +1118,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="CT464Model.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
-                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
-                <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
-                <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
-                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
-                <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
-                <ScalarProperty Name="ProductsOldPrice" ColumnName="ProductsOldPrice" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Promotions">
             <EntityTypeMapping TypeName="CT464Model.Promotion">
               <MappingFragment StoreEntitySet="Promotion">
@@ -1195,6 +1178,23 @@
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CT464Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="ProductsOldPrice" ColumnName="ProductsOldPrice" />
+                <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
+                <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
+                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
