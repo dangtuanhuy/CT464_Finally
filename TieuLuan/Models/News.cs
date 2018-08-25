@@ -14,6 +14,12 @@ namespace TieuLuan.Models
     
     public partial class News
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public News()
+        {
+            this.ImgNews = new HashSet<ImgNew>();
+        }
+    
         public int NewsId { get; set; }
         public string NewTitles { get; set; }
         public string NewsDetails { get; set; }
@@ -23,5 +29,7 @@ namespace TieuLuan.Models
         public string EmployeeCode { get; set; }
     
         public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImgNew> ImgNews { get; set; }
     }
 }

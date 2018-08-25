@@ -94,6 +94,15 @@
           <Property Name="ReportsTo" Type="int" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
+        <EntityType Name="ImgNews">
+          <Key>
+            <PropertyRef Name="ImgNew" />
+          </Key>
+          <Property Name="ImgNew" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="SortNews" Type="tinyint" Nullable="false" />
+          <Property Name="NewsId" Type="int" />
+        </EntityType>
         <EntityType Name="ImgProducts">
           <Key>
             <PropertyRef Name="ImgId" />
@@ -277,6 +286,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImgNews_News">
+          <End Role="News" Type="Self.News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ImgNews" Type="Self.ImgNews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsId" />
+            </Principal>
+            <Dependent Role="ImgNews">
+              <PropertyRef Name="NewsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ImgProducts_Products">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -407,6 +430,7 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImgNews" EntityType="Self.ImgNews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImgProducts" EntityType="Self.ImgProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
@@ -436,6 +460,10 @@
           <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgNews_News" Association="Self.FK_ImgNews_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgNews" EntitySet="ImgNews" />
           </AssociationSet>
           <AssociationSet Name="FK_ImgProducts_Products" Association="Self.FK_ImgProducts_Products">
             <End Role="Products" EntitySet="Products" />
@@ -585,6 +613,7 @@
           <Property Name="NewsDate" Type="DateTime" Precision="0" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_News_Employee" FromRole="News" ToRole="Employee" />
+          <NavigationProperty Name="ImgNews" Relationship="CT464Model.FK_ImgNews_News" FromRole="News" ToRole="ImgNew" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -868,6 +897,11 @@
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="ImgNews" EntityType="CT464Model.ImgNew" />
+          <AssociationSet Name="FK_ImgNews_News" Association="CT464Model.FK_ImgNews_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgNew" EntitySet="ImgNews" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
           <Key>
@@ -972,6 +1006,30 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ImgNew">
+          <Key>
+            <PropertyRef Name="ImgNew1" />
+          </Key>
+          <Property Name="ImgNew1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortNews" Type="Byte" Nullable="false" />
+          <Property Name="NewsId" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="CT464Model.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
+        </EntityType>
+        <Association Name="FK_ImgNews_News">
+          <End Type="CT464Model.News" Role="News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.ImgNew" Role="ImgNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsId" />
+            </Principal>
+            <Dependent Role="ImgNew">
+              <PropertyRef Name="NewsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1195,6 +1253,16 @@
                 <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgNews">
+            <EntityTypeMapping TypeName="CT464Model.ImgNew">
+              <MappingFragment StoreEntitySet="ImgNews">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
+                <ScalarProperty Name="NewsImg" ColumnName="NewsImg" />
+                <ScalarProperty Name="ImgNew1" ColumnName="ImgNew" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

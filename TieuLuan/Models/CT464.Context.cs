@@ -42,5 +42,6 @@ namespace TieuLuan.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ImgNew> ImgNews { get; set; }
     }
 }

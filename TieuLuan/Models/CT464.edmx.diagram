@@ -36,6 +36,8 @@
         <AssociationConnector Association="CT464Model.FK_OrderDetails_Products" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Products" />
         <AssociationConnector Association="CT464Model.FK_Products_Supplier" />
+        <EntityTypeShape EntityType="CT464Model.ImgNew" Width="1.5" PointX="8.25" PointY="23.625" />
+        <AssociationConnector Association="CT464Model.FK_ImgNews_News" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
