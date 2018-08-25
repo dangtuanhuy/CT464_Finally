@@ -5,60 +5,82 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Chương Trình Khuyến Mãi</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Promotions")" class="btn btn-info">
+        Tạo Mới
+    </a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionDiscount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionOpen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PromotionClose)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionOpen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionClose)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionDiscount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionOpen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionClose)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Promotions", new { id = item.PromotionId})" class="btn btn-success">
+                        <i class="fa fa-flash"></i>
+                        <span>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionDiscount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionOpen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PromotionClose)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PromotionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PromotionId })
-        </td>
-    </tr>
-}
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Promotions", new { id = item.PromotionId })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
 
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Promotions", new { id = item.PromotionId})" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
