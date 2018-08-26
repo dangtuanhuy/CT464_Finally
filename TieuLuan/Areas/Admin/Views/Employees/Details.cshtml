@@ -5,20 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2>Details</h2>
-
+<h2 class="text-center">Thông Tin Nhân Viên</h2>
+<a href="@Url.Action("Index","Employees")" class="btn btn-info">Quản Lý</a>
 <div>
-    <h4>Employee</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.EmployeePass)
+            @Html.DisplayNameFor(model => model.EmployeeImg)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmployeePass)
+            <img src="~/ImgUI/Emp/@Model.EmployeeImg" class="img-responsive Fix_Img1" alt="không có ảnh" />
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
@@ -99,13 +97,7 @@
             @Html.DisplayFor(model => model.Extension)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeImg)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeImg)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Notes)
@@ -113,14 +105,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReportsTo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReportsTo)
         </dd>
 
         <dt>
@@ -134,6 +118,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeCode }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Employees", new { id = Model.EmployeeCode })" class="btn btn-success">Chỉnh Sửa</a>
 </p>

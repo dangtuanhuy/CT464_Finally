@@ -91,7 +91,6 @@
           <Property Name="Extension" Type="nvarchar" MaxLength="4" />
           <Property Name="EmployeeImg" Type="nvarchar(max)" />
           <Property Name="Notes" Type="ntext" />
-          <Property Name="ReportsTo" Type="int" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
         <EntityType Name="ImgNews">
@@ -120,7 +119,6 @@
           <Property Name="NewTitles" Type="nvarchar" MaxLength="50" />
           <Property Name="NewsDetails" Type="nvarchar(max)" />
           <Property Name="NewsBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NewsImgs" Type="nvarchar(max)" />
           <Property Name="NewsDate" Type="date" />
           <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -165,7 +163,6 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="150" />
           <Property Name="ProductDetails" Type="nvarchar" MaxLength="50" />
           <Property Name="ProductStatus" Type="bit" />
-          <Property Name="ProductImg" Type="nvarchar(max)" />
           <Property Name="ProductUpdate" Type="date" />
           <Property Name="ProductQty" Type="int" />
           <Property Name="ProductSold" Type="decimal" Precision="18" Scale="0" />
@@ -515,7 +512,7 @@
           <Property Name="AboutImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AboutDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_About_Employee" FromRole="About" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_About_Employee" FromRole="About" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -525,7 +522,7 @@
           <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BranchDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Branch_Employee" FromRole="Branch" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_Branch_Employee" FromRole="Branch" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -563,33 +560,7 @@
           <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="EmployeeCode" />
-          </Key>
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EmployeePass" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="DateTime" Precision="3" />
-          <Property Name="HireDate" Type="DateTime" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="HomePhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="Extension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ReportsTo" Type="Int32" />
-          <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Abouts" Relationship="Self.FK_About_Employee" FromRole="Employee" ToRole="About" />
-          <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
-          <NavigationProperty Name="Deliveries" Relationship="Self.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
-          <NavigationProperty Name="News" Relationship="Self.FK_News_Employee" FromRole="Employee" ToRole="News" />
+          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
@@ -600,20 +571,6 @@
           <Property Name="SortImg" Type="Byte" Nullable="false" />
           <Property Name="ProductsId" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="News">
-          <Key>
-            <PropertyRef Name="NewsId" />
-          </Key>
-          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NewTitles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NewsDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NewsBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NewsImgs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NewsDate" Type="DateTime" Precision="0" />
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_News_Employee" FromRole="News" ToRole="Employee" />
-          <NavigationProperty Name="ImgNews" Relationship="CT464Model.FK_ImgNews_News" FromRole="News" ToRole="ImgNew" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -675,7 +632,7 @@
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Role" FromRole="Role" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Employees" Relationship="CT464Model.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -701,34 +658,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_About_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="About" Type="Self.About" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="About">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Branch_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="Branch">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Customer_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -754,48 +683,6 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="CustomerCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Delivery_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_News_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="News" Type="Self.News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="EmployeeCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -829,9 +716,7 @@
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="ImgProducts" EntityType="Self.ImgProduct" />
-          <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="Product_Promotion" EntityType="Self.Product_Promotion" />
@@ -839,14 +724,6 @@
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="About" EntitySet="Abouts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Branch" EntitySet="Branches" />
-          </AssociationSet>
           <AssociationSet Name="FK_Customer_Role" Association="Self.FK_Customer_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Customer" EntitySet="Customers" />
@@ -854,18 +731,6 @@
           <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delivery_Employee" Association="Self.FK_Delivery_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_News_Employee" Association="Self.FK_News_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
             <End Role="Order" EntitySet="Orders" />
@@ -876,10 +741,16 @@
             <End Role="Product_Promotion" EntitySet="Product_Promotion" />
           </AssociationSet>
           <EntitySet Name="Contacts" EntityType="CT464Model.Contact" />
+          <EntitySet Name="ImgNews" EntityType="CT464Model.ImgNew" />
+          <EntitySet Name="News" EntityType="CT464Model.News" />
           <EntitySet Name="Products" EntityType="CT464Model.Product" />
           <AssociationSet Name="FK_Products_Category" Association="CT464Model.FK_Products_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgNews_News" Association="CT464Model.FK_ImgNews_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgNew" EntitySet="ImgNews" />
           </AssociationSet>
           <AssociationSet Name="FK_ImgProducts_Products" Association="CT464Model.FK_ImgProducts_Products">
             <End Role="Product" EntitySet="Products" />
@@ -897,10 +768,26 @@
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <EntitySet Name="ImgNews" EntityType="CT464Model.ImgNew" />
-          <AssociationSet Name="FK_ImgNews_News" Association="CT464Model.FK_ImgNews_News">
+          <EntitySet Name="Employees" EntityType="CT464Model.Employee" />
+          <AssociationSet Name="FK_About_Employee" Association="CT464Model.FK_About_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="About" EntitySet="Abouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Employee" Association="CT464Model.FK_Branch_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Employee" Association="CT464Model.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="CT464Model.FK_Employee_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Employee" Association="CT464Model.FK_News_Employee">
+            <End Role="Employee" EntitySet="Employees" />
             <End Role="News" EntitySet="News" />
-            <End Role="ImgNew" EntitySet="ImgNews" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
@@ -918,6 +805,29 @@
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
         </EntityType>
+        <EntityType Name="ImgNew">
+          <Key>
+            <PropertyRef Name="ImgNew1" />
+          </Key>
+          <Property Name="ImgNew1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SortNews" Type="Byte" Nullable="false" />
+          <Property Name="NewsId" Type="Int32" />
+          <NavigationProperty Name="News" Relationship="CT464Model.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewTitles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDate" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImgNews" Relationship="CT464Model.FK_ImgNews_News" FromRole="News" ToRole="ImgNew" />
+          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_News_Employee" FromRole="News" ToRole="Employee" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -926,7 +836,6 @@
           <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ProductDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductStatus" Type="Boolean" />
-          <Property Name="ProductImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductUpdate" Type="DateTime" Precision="0" />
           <Property Name="ProductQty" Type="Int32" />
           <Property Name="ProductSold" Type="Decimal" Precision="18" Scale="0" />
@@ -950,6 +859,20 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgNews_News">
+          <End Type="CT464Model.News" Role="News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.ImgNew" Role="ImgNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="NewsId" />
+            </Principal>
+            <Dependent Role="ImgNew">
+              <PropertyRef Name="NewsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1009,27 +932,98 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ImgNew">
+        <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="ImgNew1" />
+            <PropertyRef Name="EmployeeCode" />
           </Key>
-          <Property Name="ImgNew1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NewsImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SortNews" Type="Byte" Nullable="false" />
-          <Property Name="NewsId" Type="Int32" />
-          <NavigationProperty Name="News" Relationship="CT464Model.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePass" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="HireDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Abouts" Relationship="CT464Model.FK_About_Employee" FromRole="Employee" ToRole="About" />
+          <NavigationProperty Name="Branches" Relationship="CT464Model.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
+          <NavigationProperty Name="Deliveries" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
+          <NavigationProperty Name="Role" Relationship="CT464Model.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="News" Relationship="CT464Model.FK_News_Employee" FromRole="Employee" ToRole="News" />
         </EntityType>
-        <Association Name="FK_ImgNews_News">
-          <End Type="CT464Model.News" Role="News" Multiplicity="0..1">
+        <Association Name="FK_About_Employee">
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="CT464Model.ImgNew" Role="ImgNew" Multiplicity="*" />
+          <End Type="CT464Model.About" Role="About" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="News">
-              <PropertyRef Name="NewsId" />
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
             </Principal>
-            <Dependent Role="ImgNew">
-              <PropertyRef Name="NewsId" />
+            <Dependent Role="About">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Employee">
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Branch" Role="Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Employee">
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Delivery" Role="Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Type="CT464Model.Role" Role="Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Employee">
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="EmployeeCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1097,28 +1091,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="CT464Model.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-                <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="TitleOfCourtesy" ColumnName="TitleOfCourtesy" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="Extension" ColumnName="Extension" />
-                <ScalarProperty Name="EmployeeImg" ColumnName="EmployeeImg" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ImgProducts">
             <EntityTypeMapping TypeName="CT464Model.ImgProduct">
               <MappingFragment StoreEntitySet="ImgProducts">
@@ -1126,19 +1098,6 @@
                 <ScalarProperty Name="ImgProducts" ColumnName="ImgProducts" />
                 <ScalarProperty Name="SortImg" ColumnName="SortImg" />
                 <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="CT464Model.News">
-              <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-                <ScalarProperty Name="NewTitles" ColumnName="NewTitles" />
-                <ScalarProperty Name="NewsDetails" ColumnName="NewsDetails" />
-                <ScalarProperty Name="NewsBy" ColumnName="NewsBy" />
-                <ScalarProperty Name="NewsImgs" ColumnName="NewsImgs" />
-                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1239,6 +1198,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImgNews">
+            <EntityTypeMapping TypeName="CT464Model.ImgNew">
+              <MappingFragment StoreEntitySet="ImgNews">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
+                <ScalarProperty Name="NewsImg" ColumnName="NewsImg" />
+                <ScalarProperty Name="ImgNew1" ColumnName="ImgNew" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="CT464Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="NewsBy" ColumnName="NewsBy" />
+                <ScalarProperty Name="NewsDetails" ColumnName="NewsDetails" />
+                <ScalarProperty Name="NewTitles" ColumnName="NewTitles" />
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="CT464Model.Product">
               <MappingFragment StoreEntitySet="Products">
@@ -1248,7 +1229,6 @@
                 <ScalarProperty Name="ProductSold" ColumnName="ProductSold" />
                 <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
                 <ScalarProperty Name="ProductUpdate" ColumnName="ProductUpdate" />
-                <ScalarProperty Name="ProductImg" ColumnName="ProductImg" />
                 <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
                 <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -1256,13 +1236,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ImgNews">
-            <EntityTypeMapping TypeName="CT464Model.ImgNew">
-              <MappingFragment StoreEntitySet="ImgNews">
-                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-                <ScalarProperty Name="SortNews" ColumnName="SortNews" />
-                <ScalarProperty Name="NewsImg" ColumnName="NewsImg" />
-                <ScalarProperty Name="ImgNew1" ColumnName="ImgNew" />
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CT464Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EmployeeImg" ColumnName="EmployeeImg" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="TitleOfCourtesy" ColumnName="TitleOfCourtesy" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

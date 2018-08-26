@@ -30,9 +30,7 @@ namespace TieuLuan.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Delivery> Deliveries { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ImgProduct> ImgProducts { get; set; }
-        public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product_Promotion> Product_Promotion { get; set; }
@@ -41,7 +39,9 @@ namespace TieuLuan.Models
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ImgNew> ImgNews { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     }
 }

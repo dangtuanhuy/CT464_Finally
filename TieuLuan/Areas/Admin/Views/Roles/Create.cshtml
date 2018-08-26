@@ -5,14 +5,16 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class=" text-center">Tạo Quyền</h2>
+<div><a href="@Url.Action("Index", "Roles")" class="btn btn-info">Quản lý</a></div>
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Role</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -26,19 +28,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RoleDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RoleDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.RoleDescription, new {@id="editor1", htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RoleDescription, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-info" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

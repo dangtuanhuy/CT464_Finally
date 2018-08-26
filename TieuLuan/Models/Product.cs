@@ -26,7 +26,6 @@ namespace TieuLuan.Models
         public string ProductName { get; set; }
         public string ProductDetails { get; set; }
         public Nullable<bool> ProductStatus { get; set; }
-        public string ProductImg { get; set; }
         public Nullable<System.DateTime> ProductUpdate { get; set; }
         public Nullable<int> ProductQty { get; set; }
         public Nullable<decimal> ProductSold { get; set; }

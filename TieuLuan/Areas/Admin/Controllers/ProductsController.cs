@@ -52,7 +52,7 @@ namespace TieuLuan.Areas.Admin.Controllers
         [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductImg,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
         {
 
             if (ModelState.IsValid)
@@ -103,7 +103,7 @@ namespace TieuLuan.Areas.Admin.Controllers
         [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductImg,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductDetails,ProductStatus,ProductUpdate,ProductQty,ProductSold,ProductsOldPrice,SupplierId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {

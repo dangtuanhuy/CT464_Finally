@@ -10,9 +10,7 @@
         <EntityTypeShape EntityType="CT464Model.Category" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Customer" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Delivery" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT464Model.Employee" Width="1.5" PointX="3.75" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.ImgProduct" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT464Model.News" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Order" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.OrderDetail" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Product_Promotion" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
@@ -20,24 +18,26 @@
         <EntityTypeShape EntityType="CT464Model.Role" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Supplier" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.sysdiagram" Width="1.5" PointX="7.75" PointY="6.5" IsExpanded="true" />
-        <AssociationConnector Association="CT464Model.FK_About_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="CT464Model.FK_Branch_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_Customer_Role" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_Order_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="CT464Model.FK_Delivery_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="CT464Model.FK_Employee_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="CT464Model.FK_News_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_OrderDetails_Order" ManuallyRouted="false" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Promotion" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CT464Model.Contact" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="CT464Model.Product" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="CT464Model.ImgNew" Width="1.5" PointX="8.25" PointY="23.625" />
+        <EntityTypeShape EntityType="CT464Model.News" Width="1.5" PointX="6" PointY="23.875" />
+        <EntityTypeShape EntityType="CT464Model.Product" Width="1.5" PointX="3" PointY="4.875" />
         <AssociationConnector Association="CT464Model.FK_Products_Category" />
+        <AssociationConnector Association="CT464Model.FK_ImgNews_News" />
         <AssociationConnector Association="CT464Model.FK_ImgProducts_Products" />
         <AssociationConnector Association="CT464Model.FK_OrderDetails_Products" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Products" />
         <AssociationConnector Association="CT464Model.FK_Products_Supplier" />
-        <EntityTypeShape EntityType="CT464Model.ImgNew" Width="1.5" PointX="8.25" PointY="23.625" />
-        <AssociationConnector Association="CT464Model.FK_ImgNews_News" />
+        <EntityTypeShape EntityType="CT464Model.Employee" Width="1.5" PointX="3.75" PointY="14.75" />
+        <AssociationConnector Association="CT464Model.FK_About_Employee" />
+        <AssociationConnector Association="CT464Model.FK_Branch_Employee" />
+        <AssociationConnector Association="CT464Model.FK_Delivery_Employee" />
+        <AssociationConnector Association="CT464Model.FK_Employee_Role" />
+        <AssociationConnector Association="CT464Model.FK_News_Employee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

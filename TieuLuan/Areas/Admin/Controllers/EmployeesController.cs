@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,14 +48,42 @@ namespace TieuLuan.Areas.Admin.Controllers
         // POST: Admin/Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,PostalCode,HomePhone,Extension,EmployeeImg,Notes,ReportsTo,RoleId")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,PostalCode,HomePhone,Extension,EmployeeImg,Notes,RoleId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                try
+                { 
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            string _FileName = Path.GetFileName(file.FileName);
+                            string _path = Path.Combine(Server.MapPath("~/ImgUI/Emp"),_FileName);
+                            file.SaveAs(_path);
+                            employee.EmployeeImg = _FileName;
+                        }
+                    }
+                }
                 db.Employees.Add(employee);
                 db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -80,14 +110,28 @@ namespace TieuLuan.Areas.Admin.Controllers
         // POST: Admin/Employees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,PostalCode,HomePhone,Extension,EmployeeImg,Notes,ReportsTo,RoleId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeCode,EmployeePass,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,PostalCode,HomePhone,Extension,EmployeeImg,Notes,RoleId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(employee).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "RoleName", employee.RoleId);

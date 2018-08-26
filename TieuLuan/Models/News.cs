@@ -24,12 +24,11 @@ namespace TieuLuan.Models
         public string NewTitles { get; set; }
         public string NewsDetails { get; set; }
         public string NewsBy { get; set; }
-        public string NewsImgs { get; set; }
         public Nullable<System.DateTime> NewsDate { get; set; }
         public string EmployeeCode { get; set; }
     
-        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImgNew> ImgNews { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

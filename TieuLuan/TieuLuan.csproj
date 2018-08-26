@@ -240,6 +240,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeMetaData.cs" />
     <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImgNew.cs">
@@ -262,14 +263,12 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductMetaData.cs" />
     <Compile Include="Models\Product_Promotion.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Promotion.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PromotionMataData.cs" />
     <Compile Include="Models\PromotionMetaData.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>CT464.tt</DependentUpon>

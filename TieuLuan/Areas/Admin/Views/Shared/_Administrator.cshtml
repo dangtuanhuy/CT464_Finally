@@ -15,7 +15,7 @@
     <link href="~/Content/Library/Admin/css/bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap theme -->
     <link href="~/Content/Library/Admin/css/bootstrap-theme.css" rel="stylesheet">
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <!--external css-->
     <!-- font icon -->
     <link href="~/Content/Library/Admin/css/elegant-icons-style.css" rel="stylesheet" />
@@ -325,6 +325,7 @@
                             <li><a class="" href="@Url.Action("Index","Deliveries")">Vận Chuyển</a></li>
                             <li><a class="" href="@Url.Action("Index","News")">Tin Tức</a></li>
                             <li><a class="" href="@Url.Action("Index","Employees")">Nhân Viên</a></li>
+                            <li><a class="" href="@Url.Action("Index","Roles")">Quyền</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -455,6 +456,10 @@
     <link href="~/Content/Library/Admin/assets/ckeditor/skins/moono-lisa/editor.css" rel="stylesheet" />
     <script>
         CKEDITOR.replace('editor1'
+        );
+    </script>
+    <script>
+        CKEDITOR.replace('editor2'
         );
     </script>
     <script src="~/Content/Library/Admin/js/jquery-ui-1.10.4.min.js"></script>
