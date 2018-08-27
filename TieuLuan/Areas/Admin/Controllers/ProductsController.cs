@@ -12,7 +12,7 @@ using TieuLuan.Models;
 
 namespace TieuLuan.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private CT464Entities db = new CT464Entities();
 

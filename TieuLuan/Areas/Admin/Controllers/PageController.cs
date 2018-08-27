@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TieuLuan.Areas.Admin.Controllers
 {
-    public class PageController : Controller
+    public class PageController : BaseController
     {
         // GET: Admin/Page
         public ActionResult Index()

@@ -9,7 +9,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" type="image/ico" href="~/Content/Library/icon/Cart.ico">
 
-    <title>CT464</title>
+    <title>CT464 - BagBag</title>
 
     <!-- Bootstrap CSS -->
     <link href="~/Content/Library/Admin/css/bootstrap.min.css" rel="stylesheet" />
@@ -268,7 +268,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="~/Content/Library/Admin/img/avatar-mini4.jpg">
                             </span>
-                            <span class="username">Tuấn Huy</span>
+                            <span class="username">@Session["username"]</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -286,7 +286,7 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="@Url.Action("Login","Login")"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_key_alt"></i> Documentation</a>
