@@ -18,7 +18,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             //Số lượng sản phẩm
             var ListProduct =
                 (from p in db.Products
-                select p).Count();
+                 select p).Count();
             ViewBag.ListProduct = ListProduct;
             //Tổng danh thu
             // var total = (

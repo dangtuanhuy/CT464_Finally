@@ -164,7 +164,55 @@ namespace TieuLuan.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult EditImg(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+         
+            return View(employee);
+        }
 
+        // POST: Admin/Employees/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ValidateInput(false)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditImg([Bind(Include = "EmployeeCode,EmployeeImg")] Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var file = Request.Files[i];
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            if (file.ContentLength > 0)
+                            {
+                                string _FileName = Path.GetFileName(file.FileName);
+                                string _path = Path.Combine(Server.MapPath("~/ImgUI/Emp"), _FileName);
+                                file.SaveAs(_path);
+                                employee.EmployeeImg = _FileName;
+                            }
+                        }
+                       
+                    }
+                    db.Entry(employee).State = EntityState.Modified;
+                    db.SaveChanges();
+             
+                return RedirectToAction("Index");
+            }
+
+            return View(employee);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

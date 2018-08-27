@@ -1308,6 +1308,7 @@
     <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Login.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\EditImg.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
