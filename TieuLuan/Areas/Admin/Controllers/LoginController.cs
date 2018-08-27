@@ -20,7 +20,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 if (result)
                 {
                     Session["username"] = model.EmployeeCode;
-                    return RedirectToAction("Index","Page");
+                    return RedirectToAction("Index", "Page");
 
                 }
                 else
@@ -30,14 +30,16 @@ namespace TieuLuan.Areas.Admin.Controllers
             }
             return View("Login");
         }
-          public static bool CheckRegister(string username, string password)
+        public static bool CheckRegister(string username, string password)
         {
             //var pass = Encrypt.MD5_Encode(password);
 
+
+            var encrpytedPassword = Encrypt.MD5_Encode(password);
             using (CT464Entities db = new CT464Entities())
             {
                 var singin = from p in db.Employees
-                             where p.EmployeeCode == username && p.EmployeePass == password
+                             where p.EmployeeCode == username && p.EmployeePass == encrpytedPassword
                              select p;
                 return singin.Any();
             }

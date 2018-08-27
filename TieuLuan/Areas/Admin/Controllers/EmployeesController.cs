@@ -70,6 +70,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                             employee.EmployeeImg = _FileName;
                         }
                     }
+                        employee.EmployeePass = Encrypt.MD5_Encode(employee.EmployeePass);
                 }
                 db.Employees.Add(employee);
                 db.SaveChanges();
