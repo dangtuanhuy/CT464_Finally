@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="CT464Model.ImgDelivery" Width="1.5" PointX="7.5" PointY="5.25" />
         <EntityTypeShape EntityType="CT464Model.ImgEmp" Width="1.5" PointX="5.25" PointY="13.75" />
         <EntityTypeShape EntityType="CT464Model.ImgNew" Width="1.5" PointX="7.5" PointY="2" />
-        <EntityTypeShape EntityType="CT464Model.ImgProduct" Width="1.5" PointX="7.5" PointY="26" />
         <EntityTypeShape EntityType="CT464Model.News" Width="1.5" PointX="5.25" PointY="1.75" />
         <EntityTypeShape EntityType="CT464Model.Order" Width="1.5" PointX="5.25" PointY="16.875" />
         <EntityTypeShape EntityType="CT464Model.OrderDetail" Width="1.5" PointX="7.5" PointY="16.875" />
@@ -36,12 +35,13 @@
         <AssociationConnector Association="CT464Model.FK_ImgEmp_Employee" />
         <AssociationConnector Association="CT464Model.FK_News_Employee" />
         <AssociationConnector Association="CT464Model.FK_ImgNews_News" />
-        <AssociationConnector Association="CT464Model.FK_ImgProducts_Products" />
         <AssociationConnector Association="CT464Model.FK_OrderDetails_Order" />
         <AssociationConnector Association="CT464Model.FK_OrderDetails_Products" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Products" />
         <AssociationConnector Association="CT464Model.FK_Product_Promotion_Promotion" />
         <AssociationConnector Association="CT464Model.FK_Products_Supplier" />
+        <EntityTypeShape EntityType="CT464Model.ImgProduct" Width="1.5" PointX="7.5" PointY="26.25" />
+        <AssociationConnector Association="CT464Model.FK_ImgProducts_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

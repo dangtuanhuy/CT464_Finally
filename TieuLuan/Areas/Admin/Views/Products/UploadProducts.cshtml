@@ -25,11 +25,11 @@
 
                     <tbody>
                         <tr>
-                            <th>@item.ProductsId</th>
+                            <th>@item.ProductId</th>
                             <th>@item.ImgProducts</th>
                             <th>@item.SortImg</th>
                             <th><img src="~/ImgUI/Product/@item.ImgProducts" width="150" height="150" /></th>
-                            <th>@Html.ActionLink("X", "DeleteImg", new { id = item.ImgId, ProductsId = item.ProductsId }, htmlAttributes: new { onclick = "return confirm('Are you sure Delete Img?');", @class = "btn btn-circle brn-danger" })</th>
+                            <th>@Html.ActionLink("X", "DeleteImg", new { id = item.ImgId, ProductId = item.ProductId }, htmlAttributes: new { onclick = "return confirm('Are you sure Delete Img?');", @class = "btn btn-circle brn-danger" })</th>
                         </tr>
                     </tbody>
 

@@ -125,7 +125,7 @@
           <Property Name="ImgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImgProducts" Type="nvarchar(max)" />
           <Property Name="SortImg" Type="tinyint" Nullable="false" />
-          <Property Name="ProductsId" Type="int" />
+          <Property Name="ProductId" Type="int" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -347,7 +347,7 @@
               <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="ImgProducts">
-              <PropertyRef Name="ProductsId" />
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -564,7 +564,6 @@
           <EntitySet Name="ImgDeliveries" EntityType="CT464Model.ImgDelivery" />
           <EntitySet Name="ImgEmps" EntityType="CT464Model.ImgEmp" />
           <EntitySet Name="ImgNews" EntityType="CT464Model.ImgNew" />
-          <EntitySet Name="ImgProducts" EntityType="CT464Model.ImgProduct" />
           <EntitySet Name="News" EntityType="CT464Model.News" />
           <EntitySet Name="Orders" EntityType="CT464Model.Order" />
           <EntitySet Name="OrderDetails" EntityType="CT464Model.OrderDetail" />
@@ -618,10 +617,6 @@
             <End Role="News" EntitySet="News" />
             <End Role="ImgNew" EntitySet="ImgNews" />
           </AssociationSet>
-          <AssociationSet Name="FK_ImgProducts_Products" Association="CT464Model.FK_ImgProducts_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ImgProduct" EntitySet="ImgProducts" />
-          </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Order" Association="CT464Model.FK_OrderDetails_Order">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
@@ -641,6 +636,11 @@
           <AssociationSet Name="FK_Products_Supplier" Association="CT464Model.FK_Products_Supplier">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="ImgProducts" EntityType="CT464Model.ImgProduct" />
+          <AssociationSet Name="FK_ImgProducts_Products" Association="CT464Model.FK_ImgProducts_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ImgProduct" EntitySet="ImgProducts" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="About">
@@ -772,16 +772,6 @@
           <Property Name="NewsId" Type="Int32" />
           <NavigationProperty Name="News" Relationship="CT464Model.FK_ImgNews_News" FromRole="ImgNew" ToRole="News" />
         </EntityType>
-        <EntityType Name="ImgProduct">
-          <Key>
-            <PropertyRef Name="ImgId" />
-          </Key>
-          <Property Name="ImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImgProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SortImg" Type="Byte" Nullable="false" />
-          <Property Name="ProductsId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
-        </EntityType>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="NewsId" />
@@ -849,10 +839,10 @@
           <Property Name="SupplierId" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="CT464Model.FK_Products_Category" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="ImgProducts" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
           <NavigationProperty Name="OrderDetails" Relationship="CT464Model.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="Product_Promotion" Relationship="CT464Model.FK_Product_Promotion_Products" FromRole="Product" ToRole="Product_Promotion" />
           <NavigationProperty Name="Supplier" Relationship="CT464Model.FK_Products_Supplier" FromRole="Product" ToRole="Supplier" />
+          <NavigationProperty Name="ImgProducts" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="Product" ToRole="ImgProduct" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -1051,20 +1041,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ImgProducts_Products">
-          <End Type="CT464Model.Product" Role="Product" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CT464Model.ImgProduct" Role="ImgProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ImgProduct">
-              <PropertyRef Name="ProductsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OrderDetails_Order">
           <End Type="CT464Model.Order" Role="Order" Multiplicity="1" />
           <End Type="CT464Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
@@ -1128,6 +1104,30 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ImgProduct">
+          <Key>
+            <PropertyRef Name="ImgId" />
+          </Key>
+          <Property Name="ImgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortImg" Type="Byte" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="CT464Model.FK_ImgProducts_Products" FromRole="ImgProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_ImgProducts_Products">
+          <End Type="CT464Model.Product" Role="Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.ImgProduct" Role="ImgProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ImgProduct">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1260,16 +1260,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ImgProducts">
-            <EntityTypeMapping TypeName="CT464Model.ImgProduct">
-              <MappingFragment StoreEntitySet="ImgProducts">
-                <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
-                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
-                <ScalarProperty Name="ImgProducts" ColumnName="ImgProducts" />
-                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="CT464Model.News">
               <MappingFragment StoreEntitySet="News">
@@ -1376,6 +1366,16 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgProducts">
+            <EntityTypeMapping TypeName="CT464Model.ImgProduct">
+              <MappingFragment StoreEntitySet="ImgProducts">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SortImg" ColumnName="SortImg" />
+                <ScalarProperty Name="ImgProducts" ColumnName="ImgProducts" />
+                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

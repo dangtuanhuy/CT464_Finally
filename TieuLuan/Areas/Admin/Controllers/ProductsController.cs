@@ -173,7 +173,7 @@ namespace TieuLuan.Areas.Admin.Controllers
         public ActionResult UploadProducts(int id, HttpPostedFileBase[] files)
         {
             byte max = 0;
-            var listImg = db.ImgProducts.Where(p => p.ProductsId == id).ToList();
+            var listImg = db.ImgProducts.Where(p => p.ProductId == id).ToList();
             if (listImg.Count > 0)
                 max = listImg.Max(p => p.SortImg);
             var listFile = files.Where(p => p != null);
@@ -181,7 +181,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             {
                 //Tạo một đối tượng
                 var img = new ImgProduct();
-                img.ProductsId = id;
+                img.ProductId = id;
                 img.ImgProducts = f.FileName;
                 img.SortImg = ++max;
                 db.ImgProducts.Add(img);
@@ -193,9 +193,9 @@ namespace TieuLuan.Areas.Admin.Controllers
             return RedirectToAction("UploadProducts");
         }
 
-        public ActionResult DeleteImg(int id, int? ProductsID)
+        public ActionResult DeleteImg(int id, int? ProductId)
         {
-            if (ProductsID.HasValue)
+            if (ProductId.HasValue)
             {
                 try
                 {
@@ -224,7 +224,7 @@ namespace TieuLuan.Areas.Admin.Controllers
             }
 
             TempData["Success_Mess"] = "<script>alert('Delete Success')</script>";
-            return Redirect("~/Products/UploadProducts/" + ProductsID);
+            return Redirect("~/Products/UploadProducts/" + ProductId);
         }
 
         protected override void Dispose(bool disposing)

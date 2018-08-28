@@ -17,9 +17,9 @@ namespace TieuLuan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ImgProducts = new HashSet<ImgProduct>();
             this.OrderDetails = new HashSet<OrderDetail>();
             this.Product_Promotion = new HashSet<Product_Promotion>();
+            this.ImgProducts = new HashSet<ImgProduct>();
         }
     
         public int ProductId { get; set; }
@@ -35,11 +35,11 @@ namespace TieuLuan.Models
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ImgProduct> ImgProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_Promotion> Product_Promotion { get; set; }
         public virtual Supplier Supplier { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImgProduct> ImgProducts { get; set; }
     }
 }
