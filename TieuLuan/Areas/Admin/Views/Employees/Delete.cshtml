@@ -9,13 +9,6 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeImg)
-        </dt>
-
-        <dd>
-           <img src="~/ImgUI/Emp/@Model.EmployeeImg" class="img-responsive Fix_Img1" alt="không có ảnh" />
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
@@ -107,12 +100,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Xóa" class="btn btn-danger" /> |
-        <a href="@Url.Action("Index","Employees")" class="btn btn-info">Quản Lý</a>
-    </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <a href="@Url.Action("Index","Employees")" class="btn btn-info">Quản Lý</a>
+        </div>
     }
 </div>

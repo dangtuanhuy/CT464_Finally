@@ -12,13 +12,13 @@ namespace TieuLuan.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ImgDelivery
+    public partial class ImgEmp
     {
-        public int ImgDeliId { get; set; }
-        public string DeliveryImg { get; set; }
-        public byte SortDeli { get; set; }
-        public Nullable<int> DeliveryId { get; set; }
+        public int ImgEmpId { get; set; }
+        public string EmployeeImg { get; set; }
+        public byte SortEmp { get; set; }
+        public string EmployeeCode { get; set; }
     
-        public virtual Delivery Delivery { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

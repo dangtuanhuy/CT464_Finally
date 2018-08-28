@@ -249,6 +249,9 @@
     <Compile Include="Models\ImgDelivery.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImgEmp.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ImgNew.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>
@@ -1303,15 +1306,16 @@
     <Content Include="Areas\Admin\Views\Product_Promotion\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product_Promotion\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product_Promotion\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\UploadProducts.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Deliveries\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\UploadProducts.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Employees\EditImg.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\UploadEmployee.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\UploadDelivery.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1369,7 +1373,7 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\Admin\Views\Contacts\" />
     <Folder Include="Content\Library\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="ImgUI\About\" />
+    <Folder Include="ImgUI\Deli\" />
     <Folder Include="ImgUI\Emp\" />
     <Folder Include="ImgUI\News\" />
     <Folder Include="ImgUI\Product\" />

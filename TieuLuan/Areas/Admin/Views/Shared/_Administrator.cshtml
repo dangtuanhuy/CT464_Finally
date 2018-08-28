@@ -1,11 +1,6 @@
 ﻿@using TieuLuan.Models;
 
-@{
-    IEnumerable<Employee> ListCount = ViewBag.ListProduct as IEnumerable<Employee>;
-    IQueryable<Product> ListProduct = ViewBag.ListProduct as IQueryable<Product>;
-    IQueryable<Promotion> promotionActive = ViewBag.promotionActive as IQueryable<Promotion>;
-    IEnumerable<Contact> contact = ViewBag.contact as IQueryable<Contact>;
-}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +41,12 @@
 <body>
     <!-- container section start -->
     <section id="container" class="">
-
+        @{
+            IEnumerable<Employee> ListCount = ViewBag.ListProduct as IEnumerable<Employee>;
+            IQueryable<Product> ListProduct = ViewBag.ListProduct as IQueryable<Product>;
+            IQueryable<Promotion> promotionActive = ViewBag.promotionActive as IQueryable<Promotion>;
+            IEnumerable<Contact> contact = ViewBag.contact as IQueryable<Contact>;
+        }
 
         <header class="header dark-bg">
             <div class="toggle-nav">

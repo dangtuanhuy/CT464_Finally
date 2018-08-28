@@ -67,8 +67,7 @@ namespace TieuLuan.Models
             [Display(Name = "Thông tin khác")]
             public string Extension { get; set; }
 
-            [Display(Name = "Hình Đại Diện")]
-            public string EmployeeImg { get; set; }
+
 
             [Display(Name = "Ghi chú")]
             [DataType(DataType.MultilineText)]

@@ -27,8 +27,8 @@ namespace TieuLuan.Models
         public Nullable<System.DateTime> NewsDate { get; set; }
         public string EmployeeCode { get; set; }
     
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImgNew> ImgNews { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

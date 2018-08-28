@@ -31,9 +31,6 @@
                 @Html.DisplayNameFor(model => model.HomePhone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeImg)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Notes)
             </th>
 
@@ -59,9 +56,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.HomePhone)
                 </td>
-                <td align="center">                
-                    <img src="~/ImgUI/Emp/@item.EmployeeImg" class="img-responsive Fix_Img" alt="Hình không hiển thị" />
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
@@ -74,7 +69,7 @@
                         </span>
                     </a>
                     |
-                    <a href="@Url.Action("EditImg", "Employees", new { id = item.EmployeeCode })" class="btn btn-default">
+                    <a href="@Url.Action("UploadEmployee", "Employees", new { id = item.EmployeeCode })" class="btn btn-default">
                         <i class=" fa fa-address-book-o"></i>
                         <span>
 
