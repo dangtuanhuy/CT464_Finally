@@ -10,7 +10,7 @@ using TieuLuan.Models;
 
 namespace TieuLuan.Areas.Admin.Controllers
 {
-    public class AboutsController : BaseController
+    public class AboutsController : Controller
     {
         private CT464Entities db = new CT464Entities();
 
@@ -39,13 +39,13 @@ namespace TieuLuan.Areas.Admin.Controllers
         // GET: Admin/Abouts/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName");
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "LastName");
             return View();
         }
 
         // POST: Admin/Abouts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AboutId,AboutUs,AboutImg,AboutDetails,EmployeeCode")] About about)
@@ -57,7 +57,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "LastName", about.EmployeeCode);
             return View(about);
         }
 
@@ -73,13 +73,13 @@ namespace TieuLuan.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "LastName", about.EmployeeCode);
             return View(about);
         }
 
         // POST: Admin/Abouts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AboutId,AboutUs,AboutImg,AboutDetails,EmployeeCode")] About about)
@@ -90,7 +90,7 @@ namespace TieuLuan.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "FirstName", about.EmployeeCode);
+            ViewBag.EmployeeCode = new SelectList(db.Employees, "EmployeeCode", "LastName", about.EmployeeCode);
             return View(about);
         }
 

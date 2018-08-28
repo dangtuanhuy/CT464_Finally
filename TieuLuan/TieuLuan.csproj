@@ -1294,7 +1294,6 @@
     <Content Include="Areas\Admin\Views\Abouts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Abouts\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Abouts\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Abouts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Abouts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Promotions\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Promotions\Delete.cshtml" />
@@ -1317,6 +1316,7 @@
     <Content Include="Areas\Admin\Views\Employees\UploadEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Deliveries\UploadDelivery.cshtml" />
     <Content Include="Areas\Admin\Views\News\UploadNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

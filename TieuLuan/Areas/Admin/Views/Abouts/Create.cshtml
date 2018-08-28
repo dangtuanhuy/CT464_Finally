@@ -23,13 +23,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AboutImg, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AboutImg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AboutImg, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.AboutDetails, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,7 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-info" />
+                <input type="submit" value="Thêm" class="btn btn-info" />
             </div>
         </div>
     </div>
