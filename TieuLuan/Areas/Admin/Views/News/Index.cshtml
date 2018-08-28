@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.NewsDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+                @Html.DisplayNameFor(model => model.Employee.FirstName)
             </th>
             <th></th>
         </tr>
@@ -50,9 +50,16 @@
                     @Html.DisplayFor(modelItem => item.NewsDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
                 </td>
                 <td>
+                    <a href="@Url.Action("UploadNews", "News", new { id = item.NewsId })" class="btn btn-success">
+                        <i class="fa fa-bell"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
                     <a href="@Url.Action("Edit", "News", new { id = item.NewsId })" class="btn btn-success">
                         <i class="fa fa-flash"></i>
                         <span>
