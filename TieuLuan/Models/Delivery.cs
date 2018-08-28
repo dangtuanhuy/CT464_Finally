@@ -14,13 +14,20 @@ namespace TieuLuan.Models
     
     public partial class Delivery
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Delivery()
+        {
+            this.ImgDeliveries = new HashSet<ImgDelivery>();
+        }
+    
         public int DeliveryId { get; set; }
         public string DeliveryTitle { get; set; }
         public string DeliveryDetails { get; set; }
         public string DeliveryQuestion { get; set; }
-        public string DeliveryImg { get; set; }
         public string EmployeeCode { get; set; }
     
         public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImgDelivery> ImgDeliveries { get; set; }
     }
 }

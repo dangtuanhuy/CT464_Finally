@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="CT464Model.Branch" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Category" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Customer" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT464Model.Delivery" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.ImgProduct" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.Order" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CT464Model.OrderDetail" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
@@ -35,9 +34,12 @@
         <EntityTypeShape EntityType="CT464Model.Employee" Width="1.5" PointX="3.75" PointY="14.75" />
         <AssociationConnector Association="CT464Model.FK_About_Employee" />
         <AssociationConnector Association="CT464Model.FK_Branch_Employee" />
-        <AssociationConnector Association="CT464Model.FK_Delivery_Employee" />
         <AssociationConnector Association="CT464Model.FK_Employee_Role" />
         <AssociationConnector Association="CT464Model.FK_News_Employee" />
+        <EntityTypeShape EntityType="CT464Model.Delivery" Width="1.5" PointX="6" PointY="28" />
+        <EntityTypeShape EntityType="CT464Model.ImgDelivery" Width="1.5" PointX="8.25" PointY="28.25" />
+        <AssociationConnector Association="CT464Model.FK_Delivery_Employee" />
+        <AssociationConnector Association="CT464Model.FK_ImgDelivery_Delivery" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

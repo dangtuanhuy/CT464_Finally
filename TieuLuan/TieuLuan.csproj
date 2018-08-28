@@ -246,6 +246,9 @@
     <Compile Include="Models\EmployeeMetaData.cs" />
     <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImgDelivery.cs">
+      <DependentUpon>CT464.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ImgNew.cs">
       <DependentUpon>CT464.tt</DependentUpon>
     </Compile>

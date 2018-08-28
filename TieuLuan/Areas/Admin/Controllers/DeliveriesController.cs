@@ -44,11 +44,10 @@ namespace TieuLuan.Areas.Admin.Controllers
         }
 
         // POST: Admin/Deliveries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,DeliveryImg,EmployeeCode")] Delivery delivery)
+        public ActionResult Create([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +81,7 @@ namespace TieuLuan.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,DeliveryImg,EmployeeCode")] Delivery delivery)
+        public ActionResult Edit([Bind(Include = "DeliveryId,DeliveryTitle,DeliveryDetails,DeliveryQuestion,EmployeeCode")] Delivery delivery)
         {
             if (ModelState.IsValid)
             {

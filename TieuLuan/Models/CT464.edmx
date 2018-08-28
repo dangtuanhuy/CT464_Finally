@@ -70,7 +70,6 @@
           <Property Name="DeliveryTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryDetails" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryQuestion" Type="ntext" />
-          <Property Name="DeliveryImg" Type="nvarchar(max)" />
           <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
@@ -92,6 +91,15 @@
           <Property Name="EmployeeImg" Type="nvarchar(max)" />
           <Property Name="Notes" Type="ntext" />
           <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="ImgDelivery">
+          <Key>
+            <PropertyRef Name="ImgDelivery" />
+          </Key>
+          <Property Name="ImgDelivery" Type="int" Nullable="false" />
+          <Property Name="DeliveryImg" Type="nvarchar" MaxLength="150" />
+          <Property Name="SortDeli" Type="tinyint" Nullable="false" />
+          <Property Name="DeliveryId" Type="int" />
         </EntityType>
         <EntityType Name="ImgNews">
           <Key>
@@ -283,6 +291,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImgDelivery_Delivery">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="ImgDelivery" Type="Self.ImgDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DeliveryId" />
+            </Principal>
+            <Dependent Role="ImgDelivery">
+              <PropertyRef Name="DeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ImgNews_News">
           <End Role="News" Type="Self.News" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -427,6 +447,7 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImgDelivery" EntityType="Self.ImgDelivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImgNews" EntityType="Self.ImgNews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImgProducts" EntityType="Self.ImgProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -457,6 +478,10 @@
           <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgDelivery_Delivery" Association="Self.FK_ImgDelivery_Delivery">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="ImgDelivery" EntitySet="ImgDelivery" />
           </AssociationSet>
           <AssociationSet Name="FK_ImgNews_News" Association="Self.FK_ImgNews_News">
             <End Role="News" EntitySet="News" />
@@ -549,18 +574,6 @@
           <Property Name="RoleId" Type="Int32" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Customer_Role" FromRole="Customer" ToRole="Role" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="Delivery">
-          <Key>
-            <PropertyRef Name="DeliveryId" />
-          </Key>
-          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DeliveryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
@@ -715,7 +728,6 @@
           <EntitySet Name="Branches" EntityType="Self.Branch" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
           <EntitySet Name="ImgProducts" EntityType="Self.ImgProduct" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
@@ -777,10 +789,6 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Branch" EntitySet="Branches" />
           </AssociationSet>
-          <AssociationSet Name="FK_Delivery_Employee" Association="CT464Model.FK_Delivery_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employee_Role" Association="CT464Model.FK_Employee_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Employee" EntitySet="Employees" />
@@ -788,6 +796,16 @@
           <AssociationSet Name="FK_News_Employee" Association="CT464Model.FK_News_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <EntitySet Name="Deliveries" EntityType="CT464Model.Delivery" />
+          <EntitySet Name="ImgDeliveries" EntityType="CT464Model.ImgDelivery" />
+          <AssociationSet Name="FK_Delivery_Employee" Association="CT464Model.FK_Delivery_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImgDelivery_Delivery" Association="CT464Model.FK_ImgDelivery_Delivery">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="ImgDelivery" EntitySet="ImgDeliveries" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
@@ -953,9 +971,9 @@
           <Property Name="RoleId" Type="Int32" />
           <NavigationProperty Name="Abouts" Relationship="CT464Model.FK_About_Employee" FromRole="Employee" ToRole="About" />
           <NavigationProperty Name="Branches" Relationship="CT464Model.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
-          <NavigationProperty Name="Deliveries" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
           <NavigationProperty Name="Role" Relationship="CT464Model.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="News" Relationship="CT464Model.FK_News_Employee" FromRole="Employee" ToRole="News" />
+          <NavigationProperty Name="Deliveries" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
         </EntityType>
         <Association Name="FK_About_Employee">
           <End Type="CT464Model.Employee" Role="Employee" Multiplicity="0..1">
@@ -985,20 +1003,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Delivery_Employee">
-          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CT464Model.Delivery" Role="Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Role">
           <End Type="CT464Model.Role" Role="Role" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1024,6 +1028,54 @@
             </Principal>
             <Dependent Role="News">
               <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="CT464Model.FK_Delivery_Employee" FromRole="Delivery" ToRole="Employee" />
+          <NavigationProperty Name="ImgDeliveries" Relationship="CT464Model.FK_ImgDelivery_Delivery" FromRole="Delivery" ToRole="ImgDelivery" />
+        </EntityType>
+        <EntityType Name="ImgDelivery">
+          <Key>
+            <PropertyRef Name="ImgDelivery1" />
+          </Key>
+          <Property Name="ImgDelivery1" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryImg" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SortDeli" Type="Byte" Nullable="false" />
+          <Property Name="DeliveryId" Type="Int32" />
+          <NavigationProperty Name="Delivery" Relationship="CT464Model.FK_ImgDelivery_Delivery" FromRole="ImgDelivery" ToRole="Delivery" />
+        </EntityType>
+        <Association Name="FK_Delivery_Employee">
+          <End Type="CT464Model.Employee" Role="Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT464Model.Delivery" Role="Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImgDelivery_Delivery">
+          <End Type="CT464Model.Delivery" Role="Delivery" Multiplicity="0..1" />
+          <End Type="CT464Model.ImgDelivery" Role="ImgDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="DeliveryId" />
+            </Principal>
+            <Dependent Role="ImgDelivery">
+              <PropertyRef Name="DeliveryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1076,18 +1128,6 @@
                 <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
                 <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Deliveries">
-            <EntityTypeMapping TypeName="CT464Model.Delivery">
-              <MappingFragment StoreEntitySet="Delivery">
-                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
-                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
-                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
-                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
-                <ScalarProperty Name="DeliveryImg" ColumnName="DeliveryImg" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1254,6 +1294,27 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
                 <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="CT464Model.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="DeliveryQuestion" ColumnName="DeliveryQuestion" />
+                <ScalarProperty Name="DeliveryDetails" ColumnName="DeliveryDetails" />
+                <ScalarProperty Name="DeliveryTitle" ColumnName="DeliveryTitle" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgDeliveries">
+            <EntityTypeMapping TypeName="CT464Model.ImgDelivery">
+              <MappingFragment StoreEntitySet="ImgDelivery">
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="SortDeli" ColumnName="SortDeli" />
+                <ScalarProperty Name="DeliveryImg" ColumnName="DeliveryImg" />
+                <ScalarProperty Name="ImgDelivery1" ColumnName="ImgDelivery" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
