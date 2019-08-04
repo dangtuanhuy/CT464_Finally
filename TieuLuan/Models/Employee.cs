@@ -20,6 +20,7 @@ namespace TieuLuan.Models
             this.Abouts = new HashSet<About>();
             this.Branches = new HashSet<Branch>();
             this.Deliveries = new HashSet<Delivery>();
+            this.ImgEmps = new HashSet<ImgEmp>();
             this.News = new HashSet<News>();
         }
     
@@ -35,9 +36,7 @@ namespace TieuLuan.Models
         public string PostalCode { get; set; }
         public string HomePhone { get; set; }
         public string Extension { get; set; }
-        public string EmployeeImg { get; set; }
         public string Notes { get; set; }
-        public Nullable<int> ReportsTo { get; set; }
         public Nullable<int> RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -47,6 +46,8 @@ namespace TieuLuan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Delivery> Deliveries { get; set; }
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImgEmp> ImgEmps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
     }

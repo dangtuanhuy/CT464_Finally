@@ -17,7 +17,7 @@ namespace TieuLuan.Models
         public int ImgId { get; set; }
         public string ImgProducts { get; set; }
         public byte SortImg { get; set; }
-        public Nullable<int> ProductsId { get; set; }
+        public Nullable<int> ProductId { get; set; }
     
         public virtual Product Product { get; set; }
     }

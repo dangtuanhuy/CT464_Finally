@@ -10,7 +10,7 @@ using TieuLuan.Models;
 
 namespace TieuLuan.Areas.Admin.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactsController : BaseController
     {
         private CT464Entities db = new CT464Entities();
 

@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2 class="text-center">Phục Vụ Giao Hàng</h2>
+<h2 class="text-center">Thông Tin Hỗ Trợ</h2>
 
 <p>
     <a href="@Url.Action("Create", "Deliveries")" class="btn btn-info">
@@ -23,9 +23,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeliveryQuestion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryImg)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee.FirstName)
@@ -47,15 +44,18 @@
                     @Html.DisplayFor(modelItem => item.DeliveryQuestion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeliveryImg)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Employee.FirstName)
                 </td>
-            
                 <td>
                     <a href="@Url.Action("Edit", "Deliveries", new { id = item.DeliveryId })" class="btn btn-success">
                         <i class="fa fa-flash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("UploadDelivery", "Deliveries", new { id = item.DeliveryId })" class="btn btn-default">
+                        <i class=" fa fa-address-book-o"></i>
                         <span>
 
                         </span>
@@ -68,14 +68,13 @@
                         </span>
                     </a>
                     |
-                    <a href="@Url.Action("Delete", "Deliveries", new { id = item.DeliveryId })" class="btn btn-danger">
+                    <a href="@Url.Action("Delete", "Deliveries", new { id = item.DeliveryId})" class="btn btn-danger">
                         <i class="fa fa-trash-o"></i>
                         <span>
 
                         </span>
                     </a>
                 </td>
-                
             </tr>
         }
     </tbody>

@@ -5,8 +5,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_Administrator.cshtml";
 }
 
-<h2 class="text-center">Thông Tin Phục Vụ Giao Hàng</h2>
-<div><a href="@Url.Action("Index", "Deliveries")" class="btn btn-info">Quản lý</a></div>
+<h2 class="text-center">Thông Tin Hỗ Trợ Khách Hàng </h2>
+<a href="@Url.Action("Index","Deliveries")" class="btn btn-info">Quản Lý</a>
 <div>
 
     <hr />
@@ -36,14 +36,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DeliveryImg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryImg)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Employee.FirstName)
         </dt>
 
@@ -56,3 +48,4 @@
 <p>
     <a href="@Url.Action("Edit", "Deliveries", new { id = Model.DeliveryId })" class="btn btn-success">Chỉnh Sửa</a>
 </p>
+

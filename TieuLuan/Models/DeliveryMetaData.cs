@@ -18,6 +18,7 @@ namespace TieuLuan.Models
 
             [Required(ErrorMessage = "Trường bắt buộc phải nhập")]
             [Display(Name="Chi Tiết")]
+         
             public string DeliveryDetails { get; set; }
 
             [Required(ErrorMessage = "Trường bắt buộc phải nhập")]
@@ -25,7 +26,7 @@ namespace TieuLuan.Models
             public string DeliveryQuestion { get; set; }
 
          
-            public string DeliveryImg { get; set; }
+         
 
             public string EmployeeCode { get; set; }
         }

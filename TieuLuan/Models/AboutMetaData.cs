@@ -17,7 +17,6 @@ namespace TieuLuan.Models
             [Required(ErrorMessage = "Bắt buộc phải điền")]
             public string AboutUs { get; set; }
 
-            [Required(ErrorMessage = "Bắt buộc phải điền")]
             public string AboutImg { get; set; }
 
             [Display(Name = "Chi Tiết")]

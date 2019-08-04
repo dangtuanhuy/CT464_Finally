@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using TieuLuan.Models;
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,17 +12,17 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" type="image/ico" href="~/Content/Library/icon/Cart.ico">
 
-    <title>CT464</title>
+    <title>CT464 - BagBag</title>
 
     <!-- Bootstrap CSS -->
     <link href="~/Content/Library/Admin/css/bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap theme -->
     <link href="~/Content/Library/Admin/css/bootstrap-theme.css" rel="stylesheet">
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <!--external css-->
     <!-- font icon -->
     <link href="~/Content/Library/Admin/css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="~/Content/Library/Admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- full calendar css-->
     <link href="~/Content/Library/Admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
     <!-- easy pie chart-->
@@ -38,7 +41,12 @@
 <body>
     <!-- container section start -->
     <section id="container" class="">
-
+        @{
+            IEnumerable<Employee> ListCount = ViewBag.ListProduct as IEnumerable<Employee>;
+            IQueryable<Product> ListProduct = ViewBag.ListProduct as IQueryable<Product>;
+            IQueryable<Promotion> promotionActive = ViewBag.promotionActive as IQueryable<Promotion>;
+            IEnumerable<Contact> contact = ViewBag.contact as IQueryable<Contact>;
+        }
 
         <header class="header dark-bg">
             <div class="toggle-nav">
@@ -268,7 +276,7 @@
                             <span class="profile-ava">
                                 <img alt="" src="~/Content/Library/Admin/img/avatar-mini4.jpg">
                             </span>
-                            <span class="username">Tuấn Huy</span>
+                            <span class="username">@Session["username"]</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -286,7 +294,7 @@
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="@Url.Action("Login","Login")"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_key_alt"></i> Documentation</a>
@@ -325,6 +333,7 @@
                             <li><a class="" href="@Url.Action("Index","Deliveries")">Vận Chuyển</a></li>
                             <li><a class="" href="@Url.Action("Index","News")">Tin Tức</a></li>
                             <li><a class="" href="@Url.Action("Index","Employees")">Nhân Viên</a></li>
+                            <li><a class="" href="@Url.Action("Index","Roles")">Quyền</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -395,9 +404,9 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="info-box blue-bg">
-                            <i class="fa fa-cloud-download"></i>
-                            <div class="count">6.674</div>
-                            <div class="title">Download</div>
+                            <i class="fa fa-users"></i>
+                            <div class="count">@ViewBag.ListCount</div>
+                            <div class="title">Employee</div>
                         </div>
                         <!--/.info-box-->
                     </div>
@@ -405,9 +414,9 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="info-box brown-bg">
-                            <i class="fa fa-shopping-cart"></i>
-                            <div class="count">7.538</div>
-                            <div class="title">Purchased</div>
+                            <i class="fa fa-angellist"></i>
+                            <div class="count">@ViewBag.promotionActive</div>
+                            <div class="title">Promotion</div>
                         </div>
                         <!--/.info-box-->
                     </div>
@@ -415,9 +424,9 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="info-box dark-bg">
-                            <i class="fa fa-thumbs-o-up"></i>
-                            <div class="count">4.362</div>
-                            <div class="title">Order</div>
+                            <i class="fa fa-whatsapp"></i>
+                            <div class="count">@ViewBag.contact</div>
+                            <div class="title">Contact</div>
                         </div>
                         <!--/.info-box-->
                     </div>
@@ -425,9 +434,9 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="info-box green-bg">
-                            <i class="fa fa-cubes"></i>
-                            <div class="count">1.426</div>
-                            <div class="title">Stock</div>
+                            <i class="fa fa-clipboard"></i>
+                            <div class="count">@ViewBag.ListProduct</div>
+                            <div class="title">Products</div>
                         </div>
                         <!--/.info-box-->
                     </div>
@@ -455,6 +464,10 @@
     <link href="~/Content/Library/Admin/assets/ckeditor/skins/moono-lisa/editor.css" rel="stylesheet" />
     <script>
         CKEDITOR.replace('editor1'
+        );
+    </script>
+    <script>
+        CKEDITOR.replace('editor2'
         );
     </script>
     <script src="~/Content/Library/Admin/js/jquery-ui-1.10.4.min.js"></script>

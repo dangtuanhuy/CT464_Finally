@@ -18,14 +18,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.AboutUs)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AboutImg)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.AboutDetails)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+                @Html.DisplayNameFor(model => model.Employee.FirstName)
             </th>
             <th></th>
         </tr>
@@ -37,14 +35,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AboutUs)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AboutImg)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.AboutDetails)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
                 </td>
                 <td>
                     <a href="@Url.Action("Edit", "Abouts", new { id = item.AboutId })" class="btn btn-success">
